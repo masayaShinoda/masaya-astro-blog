@@ -3,15 +3,15 @@ const hero_text: string =
   "Welcome to my personal blog. This is where I articulate and share my thoughts on topics that I am learning about.";
 ---
 
-<section>
+<section class="section-hero">
   <p>{hero_text}</p>
 </section>
 
 <style>
-  section {
+  .section-hero {
     margin: 1rem 0 2.5rem 0;
   }
-  p {
+  .section-hero p {
     font-size: var(--type_scale_2);
     max-width: min(40ch, 100%);
   }
