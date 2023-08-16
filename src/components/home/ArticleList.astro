@@ -1,0 +1,53 @@
+---
+import format_date from "../../utils/format_date";
+const allPosts = await Astro.glob("../../pages/blog/*.md");
+---
+
+<ul class="article-list">
+  {
+    allPosts.map((post) => (
+      <li>
+        <a href={post.url}>
+          <h2>{post.frontmatter.title}</h2>
+        </a>
+        <date>{format_date(post.frontmatter.date)}</date>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid var(--clr_grey_shade_d);
+    border-radius: 0.875rem;
+  }
+  .article-list li {
+    width: 100%;
+    /* outline: 1px solid red; */
+  }
+  .article-list li:not(:last-of-type) {
+    margin-bottom: var(--type_scale_6);
+  }
+  .article-list a {
+    width: 100%;
+    text-decoration: none;
+  }
+  .article-list a:visited {
+    color: var(--clr_primary);
+  }
+  .article-list a:hover h2,
+  .article-list a:focus h2 {
+    text-decoration: underline;
+    color: var(--clr_primary_shade_a);
+  }
+  .article-list li h2 {
+    margin-bottom: 0.5rem;
+  }
+  .article-list li date {
+    color: var(--clr_grey_shade_a);
+  }
+</style>

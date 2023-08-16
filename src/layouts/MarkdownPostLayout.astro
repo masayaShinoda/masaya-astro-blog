@@ -1,0 +1,61 @@
+---
+import Layout from "./Layout.astro"; // the base layout
+import format_date from "../utils/format_date";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} - Masaya's Blog`}>
+  <main class="blog">
+    <article>
+      <section class="section-frontmatter">
+          <time datetime={frontmatter.date}>{format_date(frontmatter.date)}</time>
+        <h1>{frontmatter.title}</h1>
+      </section>
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style is:inline>
+  .blog {
+    width: 100%;
+    max-width: min(var(--content_max_width), 65ch);
+    padding: var(--padding_horizontal);
+    font-family: var(--font_primary);
+    margin: 0 auto;
+  }
+  .blog h1,
+  .blog h2,
+  .blog h3,
+  .blog h4,
+  .blog h5,
+  .blog h6 {
+    margin: var(--type_scale_1) 0 var(--type_scale_2) 0;
+  }
+  .blog div,
+  .blog span,
+  .blog p,
+  .blog a,
+  .blog ul,
+  .blog ol,
+  .blog q,
+  .blog blockquote,
+  .blog li {
+    margin: var(--type_scale_1) 0 var(--type_scale_2) 0;
+    line-height: 1.5;
+  }
+  .blog h1 {
+    font-size: calc(var(--type_scale_6) * 1.25);
+  }
+  .blog time {
+    color: var(--clr_grey_shade_b);
+  }
+  .blog strong {
+    font-weight: 600;
+  }
+
+  .blog .section-frontmatter {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--clr_grey_shade_e);
+  }
+</style>
