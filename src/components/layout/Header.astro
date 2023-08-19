@@ -10,13 +10,13 @@ const nav_links: NavItem[] = [
   //   href: "/tags",
   // },
   {
-    name: "Portfolio Website",
+    name: "Portfolio →",
     href: "https://masayashida.com",
   },
 ];
 ---
 
-<header>
+<header class="header">
   <a href="/" class="header__logo">
     <img
       src="/assets/maya-logo-icon.svg"
@@ -35,8 +35,8 @@ const nav_links: NavItem[] = [
   </nav>
 </header>
 
-<style is:inline>
-  header {
+<style>
+  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -54,25 +54,35 @@ const nav_links: NavItem[] = [
   }
   .header__logo > span {
     margin-left: 0.75rem;
-
     color: var(--clr_primary);
-    font-size: 1.125rem;
+    font-size: var(--type_scale_2);
     font-weight: 600;
+    line-height: 1.24;
   }
-  header nav a {
+  @media screen and (max-width: 48em) {
+    .header__logo {
+      max-width: 50%;
+    }
+  }
+  .header nav {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .header nav a {
     text-decoration: none;
     color: var(--clr_primary);
     font-weight: 600;
     transition: color 200ms ease-out;
   }
-  header nav a:visited {
+  .header nav a:visited {
     color: var(--clr_primary);
   }
-  header nav a:hover,
-  header nav a:focus {
+  .header nav a:hover,
+  .header nav a:focus {
     color: var(--clr_primary_shade_a);
   }
-  header nav a:not(:last-of-type) {
+  .header nav a:not(:last-of-type) {
     margin-right: 1rem;
   }
 </style>

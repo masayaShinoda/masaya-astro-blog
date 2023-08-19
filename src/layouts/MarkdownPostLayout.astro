@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
   <main class="blog">
     <article>
       <section class="section-frontmatter">
-          <time datetime={frontmatter.date}>{format_date(frontmatter.date)}</time>
+        <time datetime={frontmatter.date}>{format_date(frontmatter.date)}</time>
         <h1>{frontmatter.title}</h1>
       </section>
       <slot />
@@ -24,7 +24,15 @@ const { frontmatter } = Astro.props;
     font-family: var(--font_primary);
     margin: 0 auto;
   }
-  .blog h1,
+  @media screen and (max-width: 48em) {
+    .blog {
+      padding: 2.5rem var(--padding_horizontal);
+    }
+  }
+  .blog h1 {
+    font-size: calc(var(--type_scale_6) * 1.25);
+    margin: var(--type_scale_1) 0 0 0;
+  }
   .blog h2,
   .blog h3,
   .blog h4,
@@ -44,9 +52,6 @@ const { frontmatter } = Astro.props;
     margin: var(--type_scale_1) 0 var(--type_scale_2) 0;
     line-height: 1.5;
   }
-  .blog h1 {
-    font-size: calc(var(--type_scale_6) * 1.25);
-  }
   .blog time {
     color: var(--clr_grey_shade_b);
   }
@@ -55,7 +60,13 @@ const { frontmatter } = Astro.props;
   }
 
   .blog .section-frontmatter {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--clr_grey_shade_e);
   }
+  .blog li a {
+    /* prevent long links overflow */
+    word-wrap: break-word;
+  }
 </style>
+ធ
