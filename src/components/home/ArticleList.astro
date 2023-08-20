@@ -27,7 +27,7 @@ const allPosts = await Astro.glob("../../pages/blog/*.md");
     width: 100%;
   }
   .article-list li:not(:last-of-type) {
-    margin-bottom: calc(var(--type_scale_6) * 1.125);
+    margin-bottom: calc(var(--type_scale_6) * 1.5);
   }
   .article-list a {
     width: 100%;
@@ -52,6 +52,6 @@ const allPosts = await Astro.glob("../../pages/blog/*.md");
     color: var(--clr_grey_shade_a);
   }
   body[data-theme="dark"] .article-list li date {
-    color: var(--clr_grey_shade_c);
+    color: var(--clr_grey_shade_d);
   }
 </style>

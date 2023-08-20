@@ -55,6 +55,9 @@ const { frontmatter } = Astro.props;
   .blog time {
     color: var(--clr_grey_shade_b);
   }
+  body[data-theme="dark"] .blog time {
+    color: var(--clr_grey_shade_d);
+  }
   .blog strong {
     font-weight: 600;
   }
@@ -72,4 +75,3 @@ const { frontmatter } = Astro.props;
     word-wrap: break-word;
   }
 </style>
-ធ
