@@ -20,18 +20,45 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-
-	<MetaTags />
+    <MetaTags />
     <Favicons />
     <title>{title}</title>
-  </head>
-  <body>
-    <Header />
-    <slot />
     <style is:global>
       @import "../styles/reset.css";
       @import "../styles/variables.css";
       @import "../styles/global.css";
     </style>
+  </head>
+  <body data-theme="">
+    <Header />
+    <slot />
+
+    <script is:inline>
+      // check localStorage for theme preference
+      const stored_theme = localStorage.getItem("preferred-theme");
+
+      function set_theme(theme) {
+        document.body.dataset.theme = theme;
+        localStorage.setItem("preferred-theme", theme);
+      }
+
+      if (stored_theme) {
+        if (stored_theme === "dark") {
+          set_theme("dark");
+        } else {
+          set_theme("light");
+        }
+      } else {
+        // no localStorage preference
+        const prefers_dark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        if (prefers_dark) {
+          set_theme("dark");
+        } else {
+          set_theme("light");
+        }
+      }
+    </script>
   </body>
 </html>
